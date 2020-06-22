@@ -6,7 +6,7 @@
 #include "body.h"
 #include "Apple.h"
 #include "consts.h"
-#include <unistd.h>
+
 
 std::vector<Apple> apples;
 
@@ -54,7 +54,7 @@ int main()
 
     std::cout << path << std::endl;*/
     sf::Image dead;
-    dead.loadFromFile("/home/maria/CLionProjects/untitled/dead.png");
+    dead.loadFromFile("../dead.png");
     sf::Texture end_of_game;
     end_of_game.loadFromImage(dead);
     sf::Sprite end_image;
