@@ -39,7 +39,7 @@ void Head::Move()
     m_y += m_direction[1];
 
     m_rect.setPosition(m_x*WINDOW_LENGTH/FIELD_LENGTH, m_y*WINDOW_WIDTH/FIELD_WIDTH);
-    std::cout <<m_body.size()<<std::endl;
+   
 
 }
 bool Head::Eat(std::vector<Apple> &apples)
