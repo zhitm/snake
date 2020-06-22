@@ -6,6 +6,7 @@
 #include "body.h"
 #include "Apple.h"
 #include "consts.h"
+#include <unistd.h>
 
 std::vector<Apple> apples;
 
@@ -38,6 +39,31 @@ bool is_game_end(Head head)
 
 int main()
 {
+  /*  std::string path;
+    path.resize(1024);
+
+    auto ret = readlink("/proc/self/exe", &path[0], path.size()); // &path[0] - не const char*
+
+    path.resize(ret);
+
+    if (path.at(0) == 0)
+    {
+        std::cout << "Error" << std::endl;
+        return -2;
+    }
+
+    std::cout << path << std::endl;*/
+    sf::Image dead;
+    dead.loadFromFile("/home/maria/CLionProjects/untitled/dead.png");
+    sf::Texture end_of_game;
+    end_of_game.loadFromImage(dead);
+    sf::Sprite end_image;
+    end_image.setScale(2,2);
+    end_image.setTexture(end_of_game);
+    end_image.setPosition(-670,-200);
+
+
+
 
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_LENGTH), "snake");
     Head head(FIELD_WIDTH/2, FIELD_LENGTH/2);
@@ -86,7 +112,7 @@ int main()
                 }
             }
             sf::Time elapsed = clock.getElapsedTime();
-            if (elapsed.asSeconds() >= 0.5 & not(head.m_direction[0] == 0 & head.m_direction[1] == 0)) {
+            if (elapsed.asSeconds() >= dT & not(head.m_direction[0] == 0 & head.m_direction[1] == 0)) {
                 head.Move();
                 clock.restart();
             }
@@ -108,9 +134,9 @@ int main()
 
             window.display();
             if (is_game_end(head) == true) game_is_not_over = false;
-
-        }
+            }
             window.clear(sf::Color::Red);
+            window.draw(end_image);
             window.display();
             sf::Event event;
             while (window.pollEvent(event))

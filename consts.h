@@ -9,5 +9,5 @@ const float WINDOW_WIDTH = 1000;
 const float WINDOW_LENGTH = 1000;
 const int FIELD_WIDTH = 50;
 const int FIELD_LENGTH = 50;
-
+const float dT = 0.4;
 #endif //SFMLAPP_CONSTS_H
