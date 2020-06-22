@@ -18,7 +18,9 @@ public:
     Head(int x, int y);
     void Move();
     bool Eat(std::vector<Apple> &apples);
-
+    void create_body();
+    int last_x;
+    int last_y;
 };
 
 
