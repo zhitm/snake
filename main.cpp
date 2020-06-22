@@ -110,7 +110,8 @@ int main()
             if (is_game_end(head) == true) game_is_not_over = false;
 
         }
-            window.clear();
+            window.clear(sf::Color::Red);
+            window.display();
             sf::Event event;
             while (window.pollEvent(event))
             {
